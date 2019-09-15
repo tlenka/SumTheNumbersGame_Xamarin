@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             
+             x:Class="SumTheNumbersGameXamarin.Views.MainPageView"
+             x:Name="MainPage"
+             >
+
+    <ContentPage.Content>
+        
+        <!--<RelativeLayout>
+            --><!--<Image Source="{local:ImageResource SumTheNumbersGameXamarin.Views.back2.jpg}" />--><!--
+            <Label Text="{Binding Tekst}"></Label>
+            <Label Text="BBB"></Label>
+            --><!--<Image x:Name="image"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Label Text="Hello world from XAML" VerticalOptions="Center"
+         HorizontalOptions="Center" FontSize="30"/>
+            </Grid>--><!--
+
+
+            
+        </RelativeLayout>-->
+        <FlexLayout  Direction="Column" JustifyContent="Center"  BackgroundColor="#434da3" AlignItems="Center">
+
+
+            <Button Text="PLAY" Style="{StaticResource menuButton}"  Command="{Binding NavigationCommand}" CommandParameter="GamePage"/>
+            <Button Text="HOW TO PLAY" Style="{StaticResource menuButton}" Command="{Binding NavigationCommand}" CommandParameter="TutorialPage"/>
+            <Button Text="PLAY"  Style="{StaticResource menuButton}"/>
+            <Button Text="PLAY"   Style="{StaticResource menuButton}"/>
+            <!--<Button FontFamily="Comic Sans MS" MinimumWidthRequest="400" Padding="20" FontSize="Medium" Text="PLAY" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Button Text="PLAY" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />-->
+            
+
+        </FlexLayout>
+        
+
+    </ContentPage.Content>
+    
+</ContentPage>

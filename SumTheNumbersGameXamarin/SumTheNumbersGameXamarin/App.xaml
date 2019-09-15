@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SumTheNumbersGameXamarin;assembly=SumTheNumbersGameXamarin"
+             x:Class="SumTheNumbersGameXamarin.App">
+
+    <Application.Resources>
+
+        <Style TargetType="{x:Type Button}">
+
+
+            <Setter Property="BackgroundColor" Value="#e6f3ff" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            
+            <Setter Property="BorderWidth" Value="5"/>
+
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="menuButton">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="WidthRequest" Value="300"/>
+            
+        </Style>
+        <ResourceDictionary>
+            
+            
+            <!--<Image x:Key="b" Source="background_orange.jpg" />-->
+            <!--<Style x:Key="ContentPageStyle" TargetType="ContentPage" ApplyToDerivedTypes="True">
+
+               
+                <Setter Property="BackgroundImage" Value="back2.jpg"  />
+            </Style>-->
+            <!--<ControlTemplate x:Key="BackgroundTemplate">
+                <Image Source="back3.png" VerticalOptions="CenterAndExpand"/>
+
+                --><!--<Image Source="background_orange.jpg" VerticalOptions="CenterAndExpand"/>-->
+                <!--<RelativeLayout>
+                    <Image Source="background_orange.jpg" VerticalOptions="CenterAndExpand"/>
+                <Label Text="AAAAA"></Label>
+
+                </RelativeLayout>--><!--
+                
+            </ControlTemplate>-->
+            
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
