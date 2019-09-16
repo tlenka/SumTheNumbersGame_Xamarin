@@ -14,7 +14,7 @@ namespace SumTheNumbersGameXamarin.Views
 	public partial class MainPageView : ContentPage
 	{
 
-        public static string Tet { get; set; }
+        //public static string Tet { get; set; }
 
         
 

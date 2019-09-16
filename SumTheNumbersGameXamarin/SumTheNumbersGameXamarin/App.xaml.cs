@@ -15,6 +15,8 @@ namespace SumTheNumbersGameXamarin
             NavigationService.Configure("MainPage", typeof(Views.MainPageView));
             NavigationService.Configure("GamePage", typeof(Views.GamePageView));
             NavigationService.Configure("TutorialPage", typeof(Views.TutorialPageView));
+            NavigationService.Configure("SettingsPage", typeof(Views.SettingsPageView));
+
 
             var mainPage = ((NavigationService)NavigationService).SetRootPage("MainPage");
 

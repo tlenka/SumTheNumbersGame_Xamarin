@@ -35,7 +35,7 @@
 
             <Button Text="PLAY" Style="{StaticResource menuButton}"  Command="{Binding NavigationCommand}" CommandParameter="GamePage"/>
             <Button Text="HOW TO PLAY" Style="{StaticResource menuButton}" Command="{Binding NavigationCommand}" CommandParameter="TutorialPage"/>
-            <Button Text="PLAY"  Style="{StaticResource menuButton}"/>
+            <Button Text="SETTINGS"  Style="{StaticResource menuButton}" Command="{Binding NavigationCommand}" CommandParameter="SettingsPage"/>
             <Button Text="PLAY"   Style="{StaticResource menuButton}"/>
             <!--<Button FontFamily="Comic Sans MS" MinimumWidthRequest="400" Padding="20" FontSize="Medium" Text="PLAY" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
             <Button Text="PLAY" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />-->

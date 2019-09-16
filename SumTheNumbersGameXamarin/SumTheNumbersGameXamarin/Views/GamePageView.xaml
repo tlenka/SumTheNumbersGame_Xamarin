@@ -3,10 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SumTheNumbersGameXamarin.Views.GamePageView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <!--<FlexLayout  Direction="Column" JustifyContent="Center"  BackgroundColor="#434da3" AlignItems="Center">
+            <Label Text="Are you ready?" BackgroundColor="Bisque">
+                
+            </Label>
+            <Label Text="0" BackgroundColor="AliceBlue" HeightRequest="200" />
+            
+        </FlexLayout>-->
+
+        <Grid BackgroundColor="#434da3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <!--<StackLayout Spacing="30" Grid.ColumnSpan="2" Orientation="Horizontal" BackgroundColor="AntiqueWhite">
+                <Label  Text="Are you ready? 3.. 2.. 1.. Start!" />
+                
+            </StackLayout>-->
+
+            <Label  Text="Empty Label"  Grid.ColumnSpan="4" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <Label  Text="{Binding StringNumbers}" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" BackgroundColor="Pink" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Button IsVisible="{Binding IsVisibleBtn}"  Text="Start" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" Command="{Binding StartCountCommand}"/>
+            <!--<StackLayout Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Aquamarine">
+                <Button Text="Start" />
+
+            </StackLayout>-->
+
+            <Label  Text="Your answer" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0" BackgroundColor="Pink" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="LawnGreen"/>
+
+            <Button Text="Again" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" Command="{Binding PlayAgainCommand}"/>
+            <Button Text="Back" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1"/>
+
+        </Grid>
+        
+
     </ContentPage.Content>
 </ContentPage>
