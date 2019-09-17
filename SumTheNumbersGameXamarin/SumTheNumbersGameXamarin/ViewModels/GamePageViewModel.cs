@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SumTheNumbersGameXamarin.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,9 @@ namespace SumTheNumbersGameXamarin.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
-        
+        //private SettingsModel _settings;
+
+
         private int[] _numbers;
         private string _stringNumbers;
 

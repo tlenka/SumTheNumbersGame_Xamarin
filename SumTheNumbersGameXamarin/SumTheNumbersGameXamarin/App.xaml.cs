@@ -1,4 +1,5 @@
-﻿using SumTheNumbersGameXamarin.Service;
+﻿using SumTheNumbersGameXamarin.Model;
+using SumTheNumbersGameXamarin.Service;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,6 +13,8 @@ namespace SumTheNumbersGameXamarin
         {
             InitializeComponent();
             //MainPage = new NavigationPage(new Views.MainPageView());
+            var settings = new SettingsModel();
+
             NavigationService.Configure("MainPage", typeof(Views.MainPageView));
             NavigationService.Configure("GamePage", typeof(Views.GamePageView));
             NavigationService.Configure("TutorialPage", typeof(Views.TutorialPageView));
@@ -25,6 +28,7 @@ namespace SumTheNumbersGameXamarin
         }
 
         public static INavigationService NavigationService { get; } = new NavigationService();
+        public static ISettings GameSettings { get; } = new SettingsModel();
 
         protected override void OnStart()
         {

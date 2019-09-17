@@ -1,4 +1,5 @@
-﻿using SumTheNumbersGameXamarin.Service;
+﻿using SumTheNumbersGameXamarin.Model;
+using SumTheNumbersGameXamarin.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         public string Tekst { get; set; }
         public Command NavigationCommand { get; set; }
+        //public SettingsModel Settings;
 
         public MainPageViewModel()
         {

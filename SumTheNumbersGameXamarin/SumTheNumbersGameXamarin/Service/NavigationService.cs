@@ -8,6 +8,9 @@ using Xamarin.Forms;
 
 namespace SumTheNumbersGameXamarin.Service
 {
+    /*
+        Based on: https://mallibone.com/post/a-simple-navigation-service-for-xamarinforms
+    */
     class NavigationService : INavigationService
     {
         private readonly object _sync = new object();
@@ -99,8 +102,8 @@ namespace SumTheNumbersGameXamarin.Service
 
                     parameters = new[]
                     {
-                    parameter
-                };
+                        parameter
+                    };
                 }
 
                 if (constructor == null)
