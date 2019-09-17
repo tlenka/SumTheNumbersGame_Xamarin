@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SumTheNumbersGameXamarin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace SumTheNumbersGameXamarin.Views
 		public SettingsPageView ()
 		{
 			InitializeComponent ();
+            BindingContext = new SettingsPageViewModel();
 		}
 	}
 }

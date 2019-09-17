@@ -14,8 +14,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Text="Count of numbers: " />
-            <Label Text="Binding num" Grid.Column="1"/>
-            <Slider Grid.Row="1"/>
+            <Label BindingContext="{x:Reference countSlider}"
+                   Text="{Binding Value, StringFormat='The angle is {0:F0} degrees'}" Grid.Column="1"/>
+            <Slider x:Name="countSlider" Grid.Row="1"
+                    Maximum="10"
+                    Minimum="4"
+                    Value="{Binding Count}"
+                    />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
