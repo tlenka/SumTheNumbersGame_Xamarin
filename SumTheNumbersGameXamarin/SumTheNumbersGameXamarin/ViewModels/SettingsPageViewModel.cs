@@ -27,10 +27,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
             }
         }
 
-        public void SomeFun()
-        {
-            //System.Diagnostics.Debug.WriteLine(Count);
-        }
+        
        
         //public SettingsModel Settings
         //{
@@ -52,7 +49,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
         public SettingsPageViewModel()
         {
             _settings = App.GameSettings;
-           // _count = _settings.CountOfNumbers;
+            _count = _settings.CountOfNumbers;
            // System.Diagnostics.Debug.WriteLine(_settings.CountOfNumbers);
             //_settings = settings;
             //_settings.CountOfNumbers = 8;

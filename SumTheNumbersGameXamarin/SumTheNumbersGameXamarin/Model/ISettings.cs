@@ -7,5 +7,6 @@ namespace SumTheNumbersGameXamarin.Model
     public interface ISettings
     {
         int CountOfNumbers { get; set; }
+
     }
 }

@@ -10,6 +10,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
     class GamePageViewModel : BaseViewModel
     {
         //private SettingsModel _settings;
+        private readonly ISettings _settings;
 
 
         private int[] _numbers;
@@ -53,7 +54,9 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         public GamePageViewModel()
         {
-            _numbers = new int[5] { 1, 2, 3, 4, 5 };
+            _settings = App.GameSettings;
+            int count = _settings.CountOfNumbers;
+            _numbers = new int[5] { count, 0, count, 0, count };
             IsVisibleBtn = true;
             StartCountCommand = new Command(x => StartTheGame());
             PlayAgainCommand = new Command(x => PlayAgain());
@@ -77,13 +80,13 @@ namespace SumTheNumbersGameXamarin.ViewModels
             //}
 
 
-            StringNumbers = "0";
+            StringNumbers = _settings.CountOfNumbers.ToString();
             await Task.Delay(1000);
-            StringNumbers = "2";
+            StringNumbers = _settings.CountOfNumbers.ToString();
             await Task.Delay(1000);
-            StringNumbers = "3";
+            StringNumbers = _settings.CountOfNumbers.ToString();
 
-           
+
         }
 
         private void PlayAgain()
