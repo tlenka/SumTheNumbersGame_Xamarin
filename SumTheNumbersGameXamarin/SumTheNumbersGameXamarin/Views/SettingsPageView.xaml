@@ -8,8 +8,10 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -21,6 +23,14 @@
                     Minimum="4"
                     Value="{Binding Count}"
                     />
+            <!--<Switch IsToggled="True" Grid.Row="2"/>
+            <Switch Grid.Row="2" Grid.Column="1"/>-->
+            <Label Text="aaaaaaaaaaaaaaaaa" Grid.Row="2" Grid.ColumnSpan="3"/>
+
+            <Button Text="0..10" BorderWidth="{Binding Check10_BorderW}" BorderRadius="4" BackgroundColor="#ff9900" Opacity="{Binding Check10_Opacity}" Grid.Row="3" Grid.Column="0" Command="{Binding CheckRangeCommand}" CommandParameter="10" />
+            <Button Text="11..100" BorderWidth="{Binding Check100_BorderW}" BorderRadius="3" BackgroundColor="#33ff33" Grid.Row="3" Grid.Column="1" Opacity="{Binding Check100_Opacity}" Command="{Binding CheckRangeCommand}" CommandParameter="100"/>
+            <Button Text="101..1000" BorderWidth="{Binding Check1000_BorderW}" BorderRadius="3" BackgroundColor="#33ff33" Grid.Row="3" Grid.Column="2" Opacity="{Binding Check1000_Opacity}" Command="{Binding CheckRangeCommand}" CommandParameter="1000"/>
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

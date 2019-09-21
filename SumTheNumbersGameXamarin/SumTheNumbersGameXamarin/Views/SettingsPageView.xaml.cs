@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace SumTheNumbersGameXamarin.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -18,5 +19,6 @@ namespace SumTheNumbersGameXamarin.Views
 			InitializeComponent ();
             BindingContext = new SettingsPageViewModel();
 		}
+
 	}
 }

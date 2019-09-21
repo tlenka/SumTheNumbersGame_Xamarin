@@ -63,6 +63,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
             rand = new Random();
             //StartText = "Are you ready?";
             //StartTheGame();
+            
         }
 
         private Random rand;
@@ -71,7 +72,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
             IsVisibleBtn = false;
 
             await Task.Delay(1000);
-
+            
             //foreach(int num in _numbers)
             //{
             //    num = rand.Next(0; 10);

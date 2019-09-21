@@ -19,6 +19,9 @@ namespace SumTheNumbersGameXamarin.Views
             BindingContext = new GamePageViewModel();
         }
 
-        
+        private void Button_Pressed(object sender, EventArgs e)
+        {
+
+        }
     }
 }
