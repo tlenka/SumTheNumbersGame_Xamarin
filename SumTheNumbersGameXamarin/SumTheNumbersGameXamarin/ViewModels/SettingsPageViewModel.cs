@@ -190,7 +190,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
                     
             }
 
-                System.Diagnostics.Debug.WriteLine(Check10_Opacity);
 
            
 

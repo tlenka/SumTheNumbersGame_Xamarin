@@ -12,6 +12,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
         //private SettingsModel _settings;
         private readonly ISettings _settings;
 
+        private readonly GameModel _newGame;
 
         private int[] _numbers;
         private string _stringNumbers;
@@ -56,22 +57,46 @@ namespace SumTheNumbersGameXamarin.ViewModels
         {
             _settings = App.GameSettings;
             int count = _settings.CountOfNumbers;
-            _numbers = new int[5] { count, 0, count, 0, count };
+
+            _newGame = new GameModel(_settings);
+
+           // _numbers = new int[5] { count, 0, count, 0, count };
             IsVisibleBtn = true;
+
             StartCountCommand = new Command(x => StartTheGame());
             PlayAgainCommand = new Command(x => PlayAgain());
+
             rand = new Random();
             //StartText = "Are you ready?";
             //StartTheGame();
-            
+            var num = _newGame.RandomNumbers();
+
+            foreach (int n in num)
+            {
+                //n.ToString();
+                
+
+            }
+
+            //System.Diagnostics.Debug.WriteLine(_newGame.Check100);
+
         }
 
         private Random rand;
+
         private async void StartTheGame()
         {
             IsVisibleBtn = false;
 
+            var randomNumbers = _newGame.RandomNumbers();
+
             await Task.Delay(1000);
+            foreach (int num in randomNumbers)
+            {
+                StringNumbers = num.ToString();
+                await Task.Delay(1000);
+            }
+           
             
             //foreach(int num in _numbers)
             //{
@@ -81,11 +106,11 @@ namespace SumTheNumbersGameXamarin.ViewModels
             //}
 
 
-            StringNumbers = _settings.CountOfNumbers.ToString();
-            await Task.Delay(1000);
-            StringNumbers = _settings.CountOfNumbers.ToString();
-            await Task.Delay(1000);
-            StringNumbers = _settings.CountOfNumbers.ToString();
+            //StringNumbers = _settings.CountOfNumbers.ToString();
+            //await Task.Delay(1000);
+            //StringNumbers = _settings.CountOfNumbers.ToString();
+            //await Task.Delay(1000);
+            //StringNumbers = _settings.CountOfNumbers.ToString();
 
 
         }

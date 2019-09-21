@@ -13,7 +13,6 @@ namespace SumTheNumbersGameXamarin
         {
             InitializeComponent();
             //MainPage = new NavigationPage(new Views.MainPageView());
-            var settings = new SettingsModel();
 
             NavigationService.Configure("MainPage", typeof(Views.MainPageView));
             NavigationService.Configure("GamePage", typeof(Views.GamePageView));
@@ -24,7 +23,7 @@ namespace SumTheNumbersGameXamarin
             var mainPage = ((NavigationService)NavigationService).SetRootPage("MainPage");
 
             MainPage = mainPage;
-
+            
         }
 
         public static INavigationService NavigationService { get; } = new NavigationService();

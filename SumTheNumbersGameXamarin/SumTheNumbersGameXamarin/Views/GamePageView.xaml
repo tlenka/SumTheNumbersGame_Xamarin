@@ -39,7 +39,7 @@
                     BackgroundColor="Pink" 
                     HorizontalTextAlignment="Center" 
                     VerticalTextAlignment="Center" 
-                    FontSize="Large"/>
+                    FontSize="Large" FontAttributes="Bold" HeightRequest="200"/>
             
             <Button IsVisible="{Binding IsVisibleBtn}" Text="Start" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" Command="{Binding StartCountCommand}"/>
             <!--<StackLayout Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Aquamarine">

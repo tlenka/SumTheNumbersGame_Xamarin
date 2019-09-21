@@ -11,18 +11,35 @@ namespace SumTheNumbersGameXamarin.Model
         public bool Check100 { get; set; }
         public bool Check1000 { get; set; }
 
+        //public SettingsModel()
+        //{
 
-        public SettingsModel()
+        //    System.Diagnostics.Debug.WriteLine(Check100);
+
+        //}
+
+        public SettingsModel(int count = 10, bool check10 = true, bool check100 = false, bool check1000 = false)
         {
-            SetDefaultValues();
+            CountOfNumbers = count;
+            Check10 = check10;
+            Check100 = check100;
+            Check1000 = check1000;
         }
 
-        private void SetDefaultValues()
-        {
-            CountOfNumbers = 10;
-            Check10 = true;
-            Check100 = false;
-            Check1000 = false;
-        }
+        //public SettingsModel(SettingsModel settings)
+        //{
+        //    CountOfNumbers = settings.CountOfNumbers;
+        //    Check10 = settings.Check10;
+        //    Check100 = settings.Check100;
+        //    Check1000 = settings.Check1000;
+        //}
+
+        //public void SetDefaultValues()
+        //{
+        //    CountOfNumbers = 10;
+        //    Check10 = true;
+        //    Check100 = true;
+        //    Check1000 = false;
+        //}
     }
 }
