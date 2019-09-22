@@ -6,6 +6,9 @@
 
     <Application.Resources>
 
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="BackgroundColor" Value="#434da3"/>
+        </Style>
         <Style TargetType="{x:Type Button}">
 
 
@@ -22,6 +25,24 @@
             <Setter Property="WidthRequest" Value="300"/>
             
         </Style>
+        <Style TargetType="{x:Type Button}" x:Key="checkButton">
+            <Setter Property="BorderRadius" Value="3"/>
+            <Setter Property="BackgroundColor" Value="#00cc00"/>
+        </Style>
+        
+        <Style TargetType="{x:Type Label}" x:Key="plainTextLabel">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="BackgroundColor" Value="#8a96ff"/>
+        </Style>
+
+        <Style TargetType="{x:Type Label}" x:Key="plainTextWithoutBackground">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        
         <ResourceDictionary>
             
             

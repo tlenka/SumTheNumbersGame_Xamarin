@@ -12,6 +12,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
     {
         private readonly ISettings _settings;
         private int _count;
+        private int _speedLevel;
         private bool _check10;
         private bool _check100;
         private bool _check1000;
@@ -106,23 +107,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
                 }
             }
         }
-        //public int checkBO;
-        //public bool Check10
-        //{
-        //    get
-        //    {
-        //        return _check10;
-        //    }
-        //    set
-        //    {
-        //        if (_check10 != value)
-        //        {
-        //            _check10 = value;
-        //            RaisePropertyChanged(nameof(Check10));
-        //            _settings.Check10 = Check10;
-        //        }
-        //    }
-        //}
 
         public int Count
         {
@@ -138,12 +122,27 @@ namespace SumTheNumbersGameXamarin.ViewModels
             }
         }
 
+        public int SpeedLevel
+        {
+            get { return _speedLevel; }
+            set
+            {
+                if (_speedLevel != value)
+                {
+                    _speedLevel = value;
+                    RaisePropertyChanged(nameof(SpeedLevel));
+                    _settings.SpeedLevel = SpeedLevel;
+                }
+            }
+        }
+
 
         public SettingsPageViewModel()
         {
             CheckRangeCommand = new Command((x) =>  CheckRange(x.ToString()));
             _settings = App.GameSettings;
             _count = _settings.CountOfNumbers;
+            _speedLevel = _settings.SpeedLevel;
 
             _checkedOpacity = 1;
             _uncheckedOpacity = 0.5;
@@ -160,6 +159,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
             _check100_BorderW = CheckBoxBorderWidth(_check100);
             _check1000_BorderW = CheckBoxBorderWidth(_check1000);
 
+            
 
         }
 
@@ -202,9 +202,8 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         private int CheckBoxBorderWidth(bool isChecked)
         {
-            return isChecked ? 2 : 10;
+            return isChecked ? 1 : 5;
         }
-
 
         //public event PropertyChangedEventHandler PropertyChanged;
     }

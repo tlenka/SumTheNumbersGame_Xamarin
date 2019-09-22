@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SumTheNumbersGameXamarin.Views.SettingsPageView">
+             x:Class="SumTheNumbersGameXamarin.Views.SettingsPageView"
+             >
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -9,27 +10,72 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Text="Count of numbers: " />
-            <Label BindingContext="{x:Reference countSlider}"
-                   Text="{Binding Value, StringFormat='The angle is {0:F0} degrees'}" Grid.Column="1"/>
-            <Slider x:Name="countSlider" Grid.Row="1"
+
+            <Label Text="Count of numbers: " Style="{StaticResource plainTextLabel}" Grid.ColumnSpan="2"/>
+            <Label BindingContext="{x:Reference countSlider} "
+                   Text="{Binding Value, StringFormat=' {0:F0} '}" 
+                   Style="{StaticResource plainTextLabel}"
+                   Grid.Column="2"/>
+
+            <Slider x:Name="countSlider" Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand"
                     Maximum="10"
                     Minimum="4"
-                    Value="{Binding Count}"
-                    />
+                    Value="{Binding Count}"/>
+            
+            <!--<StackLayout Grid.Row="1" Grid.ColumnSpan="3" Padding="2" VerticalOptions="CenterAndExpand" BackgroundColor="#8a96ff">
+                
+            </StackLayout>-->
+            
             <!--<Switch IsToggled="True" Grid.Row="2"/>
             <Switch Grid.Row="2" Grid.Column="1"/>-->
-            <Label Text="aaaaaaaaaaaaaaaaa" Grid.Row="2" Grid.ColumnSpan="3"/>
+            <Label Text="Check the range of numbers:" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource plainTextLabel}"/>
 
-            <Button Text="0..10" BorderWidth="{Binding Check10_BorderW}" BorderRadius="4" BackgroundColor="#ff9900" Opacity="{Binding Check10_Opacity}" Grid.Row="3" Grid.Column="0" Command="{Binding CheckRangeCommand}" CommandParameter="10" />
-            <Button Text="11..100" BorderWidth="{Binding Check100_BorderW}" BorderRadius="3" BackgroundColor="#33ff33" Grid.Row="3" Grid.Column="1" Opacity="{Binding Check100_Opacity}" Command="{Binding CheckRangeCommand}" CommandParameter="100"/>
-            <Button Text="101..1000" BorderWidth="{Binding Check1000_BorderW}" BorderRadius="3" BackgroundColor="#33ff33" Grid.Row="3" Grid.Column="2" Opacity="{Binding Check1000_Opacity}" Command="{Binding CheckRangeCommand}" CommandParameter="1000"/>
+            <Button Text="&lt; 10"  Grid.Row="3" Grid.Column="0"
+                    BorderWidth="{Binding Check10_BorderW}"  
+                    Opacity="{Binding Check10_Opacity}"
+                    Command="{Binding CheckRangeCommand}" CommandParameter="10"
+                    Style="{StaticResource checkButton}"/>
+
+            <Button Text="&lt; 100" Grid.Row="3" Grid.Column="1" 
+                    BorderWidth="{Binding Check100_BorderW}" 
+                    Opacity="{Binding Check100_Opacity}" 
+                    Command="{Binding CheckRangeCommand}" CommandParameter="100"
+                    Style="{StaticResource checkButton}"/>
+
+            <Button Text="&lt; 1000" Grid.Row="3" Grid.Column="2"
+                    BorderWidth="{Binding Check1000_BorderW}"   
+                    Opacity="{Binding Check1000_Opacity}" 
+                    Command="{Binding CheckRangeCommand}" CommandParameter="1000"
+                    Style="{StaticResource checkButton}"/>
+
+            <Label Text="Speed level: " Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource plainTextLabel}"/>
+            <Label Grid.Row="4" Grid.Column="2"
+                   BindingContext="{x:Reference speedSlider} "
+                   Text="{Binding Value, StringFormat=' {0:F0} '}"  
+                   Style="{StaticResource plainTextLabel}"/>
+
+            <Label Text="Slow" Grid.Row="5" Style="{StaticResource plainTextWithoutBackground}"/>
+            <Slider x:Name="speedSlider"
+                    Grid.Row="5" Grid.Column="1" 
+                    VerticalOptions="CenterAndExpand"
+                    Maximum="5" Minimum="1"
+                    Value="{Binding SpeedLevel}"/>
+
+            <Label Text="Fast" Grid.Row="5" Grid.Column="2"  Style="{StaticResource plainTextWithoutBackground}"/>
+
+            <Button Text="Reset to default" Grid.Row="6" Grid.ColumnSpan="3" />
+            <Button Text="Back" Grid.Row="7" Grid.ColumnSpan="3" />
         </Grid>
         
     </ContentPage.Content>

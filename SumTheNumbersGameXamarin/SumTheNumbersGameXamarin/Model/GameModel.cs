@@ -10,11 +10,14 @@ namespace SumTheNumbersGameXamarin.Model
         private Stack<int> _possibleNumbersStack;
 
         public int CountOfNumbers { get; set; }
+        public int SpeedLevel { get; set; }
+        public int SumOfNumbers { get; set; }
+
         public bool Check10 { get; set; }
         public bool Check100 { get; set; }
         public bool Check1000 { get; set; }
 
-        public int SumOfNumbers { get; set; }
+        
 
         public GameModel(ISettings settings)
         {
@@ -22,8 +25,8 @@ namespace SumTheNumbersGameXamarin.Model
             Check10 = settings.Check10;
             Check100 = settings.Check100;
             Check1000 = settings.Check1000;
+            SpeedLevel = settings.SpeedLevel;
             _possibleNumbersStack = PreparePossibleNumbers();
-            SumOfNumbers = 0;
         }
 
         private Stack<int> PreparePossibleNumbers()
@@ -51,6 +54,9 @@ namespace SumTheNumbersGameXamarin.Model
                     _possibleNumbersStack.Push(i);
                 }
             }
+
+            if (!Check10 && !Check100 && !Check1000)
+                _possibleNumbersStack.Push(0);
 
              return _possibleNumbersStack;
         }

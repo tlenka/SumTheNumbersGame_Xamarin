@@ -144,5 +144,19 @@ namespace SumTheNumbersGameXamarin.Service
 
             await CurrentNavigationPage.PopAsync();
         }
+
+        public async Task NavigateModalAsync(string pageKey, bool animated = true)
+        {
+            await NavigateModalAsync(pageKey, null, animated);
+        }
+
+        public async Task NavigateModalAsync(string pageKey, object parameter, bool animated = true)
+        {
+            var page = GetPage(pageKey, parameter);
+            NavigationPage.SetHasNavigationBar(page, false);
+            var modalNavigationPage = new NavigationPage(page);
+            await CurrentNavigationPage.Navigation.PushModalAsync(modalNavigationPage, animated);
+            _navigationPageStack.Push(modalNavigationPage);
+        }
     }
 }

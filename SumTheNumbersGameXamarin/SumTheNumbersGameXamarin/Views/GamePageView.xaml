@@ -13,7 +13,7 @@
             
         </FlexLayout>-->
 
-        <Grid BackgroundColor="#434da3">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -34,7 +34,7 @@
                 
             </StackLayout>-->
 
-            <Label  Text="{Binding AnswerText}"  Grid.ColumnSpan="4" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium" BackgroundColor="#8a96ff"/>
+            <Label  Text="{Binding AnswerText}"  Grid.ColumnSpan="4" Style="{StaticResource plainTextLabel}"/>
             <Label  Text="{Binding StringNumbers}" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" 
                     HorizontalTextAlignment="Center" 
                     VerticalTextAlignment="Center"
@@ -47,7 +47,7 @@
 
             </StackLayout>-->
             <StackLayout Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0"  Padding="8" VerticalOptions="Center">
-                <Entry  Text="{Binding UserAnswer}" Placeholder="Your answer" BackgroundColor="#8a96ff" HorizontalTextAlignment="Center" IsEnabled="{Binding IsCheckAnswerEnable}" FontSize="Large" />
+                <Entry  Text="{Binding UserAnswer}" Placeholder="Your answer" BackgroundColor="#8a96ff" HorizontalTextAlignment="Center" IsEnabled="{Binding IsCheckAnswerEnable}" FontSize="Medium" />
             </StackLayout>
             <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="#47d147" Command="{Binding CheckTheAnswerCommand}" IsEnabled="{Binding IsCheckAnswerEnable}"/>
 

@@ -43,6 +43,8 @@ namespace SumTheNumbersGameXamarin
         {
             // Handle when your app resumes
         }
+
+        
     }
 
 

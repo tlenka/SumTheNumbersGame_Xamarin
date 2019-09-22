@@ -149,33 +149,18 @@ namespace SumTheNumbersGameXamarin.ViewModels
             IsPlayAgainEnable = false;
             AnswerText = "";
             var randomNumbers = _newGame.RandomNumbers();
-
-            await Task.Delay(1000);
+            var taskDelay = 2000 / _newGame.SpeedLevel;
+            await Task.Delay(800);
             foreach (int num in randomNumbers)
             {
                 StringNumbers = num.ToString();
-                await Task.Delay(1000);
+                await Task.Delay(taskDelay);
             }
             StringNumbers = "...";
 
             
             IsCheckAnswerEnable = true;
             IsPlayAgainEnable = true;
-            //foreach(int num in _numbers)
-            //{
-            //    num = rand.Next(0; 10);
-            //    StringNumbers = num.ToString();
-            //    await Task.Delay(1000);
-            //}
-
-
-            //StringNumbers = _settings.CountOfNumbers.ToString();
-            //await Task.Delay(1000);
-            //StringNumbers = _settings.CountOfNumbers.ToString();
-            //await Task.Delay(1000);
-            //StringNumbers = _settings.CountOfNumbers.ToString();
-
-
         }
 
         public Command CheckTheAnswerCommand { get; set; }
