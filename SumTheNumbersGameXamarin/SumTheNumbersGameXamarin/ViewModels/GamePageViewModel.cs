@@ -20,6 +20,20 @@ namespace SumTheNumbersGameXamarin.ViewModels
         private bool _isCheckAnswerEnable;
         private bool _isPlayAgainEnable;
         private string _answerText;
+        private string _numbersBackground;
+
+        public string NumbersBackground
+        {
+            get { return _numbersBackground; }
+            set
+            {
+                if (_numbersBackground != value)
+                {
+                    _numbersBackground = value;
+                    RaisePropertyChanged(nameof(NumbersBackground));
+                }
+            }
+        }
 
         public string AnswerText
         {
@@ -31,7 +45,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
                     _answerText = value;
                     RaisePropertyChanged(nameof(AnswerText));
                 }
-
             }
         }
 
@@ -176,16 +189,20 @@ namespace SumTheNumbersGameXamarin.ViewModels
                 {
                     StringNumbers = _newGame.SumOfNumbers.ToString();
                     AnswerText = "Great! It's correct answer!";
+                    NumbersBackground = "#80ff80";
                 }
                 else
                 {
                     StringNumbers = _newGame.SumOfNumbers.ToString();
                     AnswerText = "Wrong! The correct answer is: ";
+                    NumbersBackground = "#ffb3b3";
                 }
             }
             else
             {
                 StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
+                AnswerText = "Wrong! The correct answer is: ";
+                NumbersBackground = "#ffb3b3";
             }
 
             IsCheckAnswerEnable = false;
@@ -212,6 +229,8 @@ namespace SumTheNumbersGameXamarin.ViewModels
             StringNumbers = "";
             UserAnswer = "";
             AnswerText = "Are you ready? Click Start!";
+            NumbersBackground = "#e6f5ff";
+
         }
 
         public Command PlayAgainCommand { get; set; }
