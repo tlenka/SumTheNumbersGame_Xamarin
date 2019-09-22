@@ -1,4 +1,5 @@
 ﻿using SumTheNumbersGameXamarin.Model;
+using SumTheNumbersGameXamarin.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,16 +10,41 @@ namespace SumTheNumbersGameXamarin.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
-        //private SettingsModel _settings;
         private readonly ISettings _settings;
+        private readonly INavigationService _navigationService;
 
         private readonly GameModel _newGame;
 
-        //private int[] _numbers;
         private string _stringNumbers;
         private string _userAnswer;
-        //private bool _IsCorrectAnswer;
+        private bool _isCheckAnswerEnable;
+        private bool _isPlayAgainEnable;
 
+        public bool IsPlayAgainEnable
+        {
+            get { return _isPlayAgainEnable; }
+            set
+            {
+                if(_isPlayAgainEnable != value)
+                {
+                    _isPlayAgainEnable = value;
+                    RaisePropertyChanged(nameof(IsPlayAgainEnable));
+                }
+            }
+        }
+
+        public bool IsCheckAnswerEnable
+        {
+            get { return _isCheckAnswerEnable; }
+            set
+            {
+                if(_isCheckAnswerEnable != value)
+                {
+                    _isCheckAnswerEnable = value;
+                    RaisePropertyChanged(nameof(IsCheckAnswerEnable));
+                }
+            }
+        }
         public string UserAnswer
         {
             get { return _userAnswer; }
@@ -64,30 +90,33 @@ namespace SumTheNumbersGameXamarin.ViewModels
         {
             _settings = App.GameSettings;
             //int count = _settings.CountOfNumbers;
+            _navigationService = App.NavigationService;
 
             _newGame = new GameModel(_settings);
 
             // _numbers = new int[5] { count, 0, count, 0, count };
             _isVisibleBtn = true;
+            _isCheckAnswerEnable = false;
+            _isPlayAgainEnable = true;
 
             StartCountCommand = new Command(x => StartTheGame());
             PlayAgainCommand = new Command(x => PlayAgain());
-            CheckTheAnswerCommand = new Command(x => CheckTheAnswer(x.ToString()));
+            //CheckTheAnswerCommand = new Command(x => CheckTheAnswer(x.ToString()));
+            CheckTheAnswerCommand = new Command(x => CheckTheAnswer());
+            GoBackCommand = new Command(x => GoBack());
             //StartText = "Are you ready?";
             //StartTheGame();
-           
+
 
             //System.Diagnostics.Debug.WriteLine(_newGame.Check100);
 
         }
 
-        private Random rand;
-
         public Command StartCountCommand { get; set; }
         private async void StartTheGame()
         {
             IsVisibleBtn = false;
-
+            IsPlayAgainEnable = false;
             var randomNumbers = _newGame.RandomNumbers();
 
             await Task.Delay(1000);
@@ -97,6 +126,10 @@ namespace SumTheNumbersGameXamarin.ViewModels
                 await Task.Delay(1000);
             }
             StringNumbers = "...";
+
+            
+            IsCheckAnswerEnable = true;
+            IsPlayAgainEnable = true;
             //foreach(int num in _numbers)
             //{
             //    num = rand.Next(0; 10);
@@ -115,12 +148,13 @@ namespace SumTheNumbersGameXamarin.ViewModels
         }
 
         public Command CheckTheAnswerCommand { get; set; }
-        private void CheckTheAnswer(string userAnswer)
+        
+        private void CheckTheAnswer()
         {
-
-            if (CanParseToInt(userAnswer))
+            System.Diagnostics.Debug.WriteLine(IsCheckAnswerEnable);
+            if (CanParseToInt(UserAnswer))
             {
-                if (Convert.ToInt32(userAnswer) == _newGame.SumOfNumbers)
+                if (Convert.ToInt32(UserAnswer) == _newGame.SumOfNumbers)
                     StringNumbers = "Good" + _newGame.SumOfNumbers.ToString();
                 else
                     StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
@@ -129,6 +163,8 @@ namespace SumTheNumbersGameXamarin.ViewModels
             {
                 StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
             }
+
+            IsCheckAnswerEnable = false;
         }
 
         private bool CanParseToInt(string number)
@@ -146,16 +182,19 @@ namespace SumTheNumbersGameXamarin.ViewModels
         }
 
         public Command PlayAgainCommand { get; set; }
-        private void PlayAgain()
+        private async void PlayAgain()
         {
             IsVisibleBtn = true;
+            IsCheckAnswerEnable = false;
             StringNumbers = "";
             UserAnswer = "";
-            
         }
 
-
-
+        public Command GoBackCommand { get; }
+        private async void GoBack()
+        {
+            await _navigationService.GoBack();
+        }
 
 
     }

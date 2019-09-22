@@ -8,7 +8,7 @@ namespace SumTheNumbersGameXamarin.Service
     public interface INavigationService
     {
         string CurrentPageKey { get; }
-
+        Task GoBack();
         void Configure(string pageKey, Type pageType);
         
         //Task GoBack();

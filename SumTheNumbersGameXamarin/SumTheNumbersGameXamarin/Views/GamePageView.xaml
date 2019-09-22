@@ -47,11 +47,11 @@
 
             </StackLayout>-->
 
-            <Entry  Text="{Binding UserAnswer}" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0" BackgroundColor="Pink" HorizontalTextAlignment="Center" />
-            <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="LawnGreen" Command="{Binding CheckTheAnswerCommand}" CommandParameter="{Binding UserAnswer}"/>
+            <Entry  Text="{Binding UserAnswer}" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0" BackgroundColor="Pink" HorizontalTextAlignment="Center" IsEnabled="{Binding IsCheckAnswerEnable}"/>
+            <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="LawnGreen" Command="{Binding CheckTheAnswerCommand}" IsEnabled="{Binding IsCheckAnswerEnable}"/>
 
-            <Button Text="Again" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" Command="{Binding PlayAgainCommand}"/>
-            <Button  Text="Back" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1"/>
+            <Button Text="Play Again" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" Command="{Binding PlayAgainCommand}" IsEnabled="{Binding IsPlayAgainEnable}"/>
+            <Button  Text="Back" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1" Command="{Binding GoBackCommand}"/>
 
         </Grid>
         

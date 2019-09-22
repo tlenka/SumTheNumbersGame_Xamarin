@@ -125,5 +125,24 @@ namespace SumTheNumbersGameXamarin.Service
             _navigationPageStack.Push(mainPage);
             return mainPage;
         }
+
+        public async Task GoBack()
+        {
+            var navigationStack = CurrentNavigationPage.Navigation;
+            if (navigationStack.NavigationStack.Count > 1)
+            {
+                await CurrentNavigationPage.PopAsync();
+                return;
+            }
+
+            if (_navigationPageStack.Count > 1)
+            {
+                _navigationPageStack.Pop();
+                await CurrentNavigationPage.Navigation.PopModalAsync();
+                return;
+            }
+
+            await CurrentNavigationPage.PopAsync();
+        }
     }
 }
