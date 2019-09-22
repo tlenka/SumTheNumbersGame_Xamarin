@@ -19,6 +19,21 @@ namespace SumTheNumbersGameXamarin.ViewModels
         private string _userAnswer;
         private bool _isCheckAnswerEnable;
         private bool _isPlayAgainEnable;
+        private string _answerText;
+
+        public string AnswerText
+        {
+            get { return _answerText; }
+            set
+            {
+                if(_answerText != value)
+                {
+                    _answerText = value;
+                    RaisePropertyChanged(nameof(AnswerText));
+                }
+
+            }
+        }
 
         public bool IsPlayAgainEnable
         {
@@ -95,10 +110,12 @@ namespace SumTheNumbersGameXamarin.ViewModels
             _newGame = new GameModel(_settings);
 
             // _numbers = new int[5] { count, 0, count, 0, count };
-            _isVisibleBtn = true;
-            _isCheckAnswerEnable = false;
-            _isPlayAgainEnable = true;
+            //_isVisibleBtn = true;
+            //_isCheckAnswerEnable = false;
+            //_isPlayAgainEnable = true;
+            //_answerText = "Are you ready? Click Start!";
 
+            SetBeforeStartOptions();
             StartCountCommand = new Command(x => StartTheGame());
             PlayAgainCommand = new Command(x => PlayAgain());
             //CheckTheAnswerCommand = new Command(x => CheckTheAnswer(x.ToString()));
@@ -117,6 +134,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
         {
             IsVisibleBtn = false;
             IsPlayAgainEnable = false;
+            AnswerText = "";
             var randomNumbers = _newGame.RandomNumbers();
 
             await Task.Delay(1000);
@@ -155,9 +173,15 @@ namespace SumTheNumbersGameXamarin.ViewModels
             if (CanParseToInt(UserAnswer))
             {
                 if (Convert.ToInt32(UserAnswer) == _newGame.SumOfNumbers)
-                    StringNumbers = "Good" + _newGame.SumOfNumbers.ToString();
+                {
+                    StringNumbers = _newGame.SumOfNumbers.ToString();
+                    AnswerText = "Great! It's correct answer!";
+                }
                 else
-                    StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
+                {
+                    StringNumbers = _newGame.SumOfNumbers.ToString();
+                    AnswerText = "Wrong! The correct answer is: ";
+                }
             }
             else
             {
@@ -181,13 +205,19 @@ namespace SumTheNumbersGameXamarin.ViewModels
             
         }
 
-        public Command PlayAgainCommand { get; set; }
-        private async void PlayAgain()
+        private void SetBeforeStartOptions()
         {
             IsVisibleBtn = true;
             IsCheckAnswerEnable = false;
             StringNumbers = "";
             UserAnswer = "";
+            AnswerText = "Are you ready? Click Start!";
+        }
+
+        public Command PlayAgainCommand { get; set; }
+        private  void PlayAgain()
+        {
+             SetBeforeStartOptions();
         }
 
         public Command GoBackCommand { get; }
@@ -196,6 +226,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
             await _navigationService.GoBack();
         }
 
-
+        
     }
 }
