@@ -200,7 +200,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
             }
             else
             {
-                StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
+                StringNumbers = _newGame.SumOfNumbers.ToString();
                 AnswerText = "Wrong! The correct answer is: ";
                 NumbersBackground = "#ffb3b3";
             }

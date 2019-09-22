@@ -47,7 +47,7 @@
 
             </StackLayout>-->
             <StackLayout Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0"  Padding="8" VerticalOptions="Center">
-                <Entry  Text="{Binding UserAnswer}" BackgroundColor="#8a96ff" HorizontalTextAlignment="Center" IsEnabled="{Binding IsCheckAnswerEnable}" FontSize="Large" />
+                <Entry  Text="{Binding UserAnswer}" Placeholder="Your answer" BackgroundColor="#8a96ff" HorizontalTextAlignment="Center" IsEnabled="{Binding IsCheckAnswerEnable}" FontSize="Large" />
             </StackLayout>
             <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="#47d147" Command="{Binding CheckTheAnswerCommand}" IsEnabled="{Binding IsCheckAnswerEnable}"/>
 
