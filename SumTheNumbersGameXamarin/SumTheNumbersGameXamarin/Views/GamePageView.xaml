@@ -47,8 +47,8 @@
 
             </StackLayout>-->
 
-            <Label  Text="Your answer" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0" BackgroundColor="Pink" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="LawnGreen"/>
+            <Entry  Text="{Binding UserAnswer}" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0" BackgroundColor="Pink" HorizontalTextAlignment="Center" />
+            <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="LawnGreen" Command="{Binding CheckTheAnswerCommand}" CommandParameter="{Binding UserAnswer}"/>
 
             <Button Text="Again" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" Command="{Binding PlayAgainCommand}"/>
             <Button  Text="Back" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1"/>

@@ -14,6 +14,8 @@ namespace SumTheNumbersGameXamarin.Model
         public bool Check100 { get; set; }
         public bool Check1000 { get; set; }
 
+        public int SumOfNumbers { get; set; }
+
         public GameModel(ISettings settings)
         {
             CountOfNumbers = settings.CountOfNumbers;
@@ -21,6 +23,7 @@ namespace SumTheNumbersGameXamarin.Model
             Check100 = settings.Check100;
             Check1000 = settings.Check1000;
             _possibleNumbersStack = PreparePossibleNumbers();
+            SumOfNumbers = 0;
         }
 
         private Stack<int> PreparePossibleNumbers()
@@ -54,6 +57,7 @@ namespace SumTheNumbersGameXamarin.Model
 
         public Array RandomNumbers()
         {
+            SumOfNumbers = 0;
             var possibleNumbersArray = _possibleNumbersStack.ToArray();
             var randomNumbersArray = new int[CountOfNumbers];
             var randomIndex = 0;
@@ -63,6 +67,7 @@ namespace SumTheNumbersGameXamarin.Model
                 Random rand = new Random();
                 randomIndex = rand.Next(0, possibleNumbersArray.Length);
                 randomNumbersArray[i] = possibleNumbersArray[randomIndex];
+                SumOfNumbers += randomNumbersArray[i];
             }
             return randomNumbersArray;
         }

@@ -14,15 +14,27 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         private readonly GameModel _newGame;
 
-        private int[] _numbers;
+        //private int[] _numbers;
         private string _stringNumbers;
+        private string _userAnswer;
+        //private bool _IsCorrectAnswer;
+
+        public string UserAnswer
+        {
+            get { return _userAnswer; }
+            set
+            {
+                if (_userAnswer != value)
+                {
+                    _userAnswer = value;
+                    RaisePropertyChanged(nameof(UserAnswer));
+                }
+            }
+        }
 
         public string StringNumbers
         {
-            get
-            {
-                return _stringNumbers;
-            }
+            get { return _stringNumbers; }
             set
             {
                 if (_stringNumbers != value)
@@ -36,10 +48,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
         private bool _isVisibleBtn;
         public bool IsVisibleBtn
         {
-            get
-            {
-                return _isVisibleBtn;
-            }
+            get { return _isVisibleBtn; }
             set
             {
                 if(_isVisibleBtn != value)
@@ -50,33 +59,23 @@ namespace SumTheNumbersGameXamarin.ViewModels
             }
         }
 
-        public Command StartCountCommand { get; set; }
-        public Command PlayAgainCommand { get; set; }
 
         public GamePageViewModel()
         {
             _settings = App.GameSettings;
-            int count = _settings.CountOfNumbers;
+            //int count = _settings.CountOfNumbers;
 
             _newGame = new GameModel(_settings);
 
-           // _numbers = new int[5] { count, 0, count, 0, count };
-            IsVisibleBtn = true;
+            // _numbers = new int[5] { count, 0, count, 0, count };
+            _isVisibleBtn = true;
 
             StartCountCommand = new Command(x => StartTheGame());
             PlayAgainCommand = new Command(x => PlayAgain());
-
-            rand = new Random();
+            CheckTheAnswerCommand = new Command(x => CheckTheAnswer(x.ToString()));
             //StartText = "Are you ready?";
             //StartTheGame();
-            var num = _newGame.RandomNumbers();
-
-            foreach (int n in num)
-            {
-                //n.ToString();
-                
-
-            }
+           
 
             //System.Diagnostics.Debug.WriteLine(_newGame.Check100);
 
@@ -84,6 +83,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         private Random rand;
 
+        public Command StartCountCommand { get; set; }
         private async void StartTheGame()
         {
             IsVisibleBtn = false;
@@ -96,8 +96,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
                 StringNumbers = num.ToString();
                 await Task.Delay(1000);
             }
-           
-            
+            StringNumbers = "...";
             //foreach(int num in _numbers)
             //{
             //    num = rand.Next(0; 10);
@@ -115,10 +114,43 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         }
 
+        public Command CheckTheAnswerCommand { get; set; }
+        private void CheckTheAnswer(string userAnswer)
+        {
+
+            if (CanParseToInt(userAnswer))
+            {
+                if (Convert.ToInt32(userAnswer) == _newGame.SumOfNumbers)
+                    StringNumbers = "Good" + _newGame.SumOfNumbers.ToString();
+                else
+                    StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
+            }
+            else
+            {
+                StringNumbers = "Wrong!" + _newGame.SumOfNumbers.ToString();
+            }
+        }
+
+        private bool CanParseToInt(string number)
+        {
+            try
+            {
+                Convert.ToInt32(number);
+                return true;
+            }
+            catch (FormatException fe)
+            {
+                return false;
+            }
+            
+        }
+
+        public Command PlayAgainCommand { get; set; }
         private void PlayAgain()
         {
             IsVisibleBtn = true;
             StringNumbers = "";
+            UserAnswer = "";
             
         }
 
