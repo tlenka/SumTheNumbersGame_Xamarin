@@ -11,7 +11,6 @@ namespace SumTheNumbersGameXamarin.Service
         Task GoBack();
         void Configure(string pageKey, Type pageType);
         
-        //Task GoBack();
 
         Task NavigateAsync(string pageKey, bool animated = true);
         Task NavigateAsync(string pageKey, object parameter, bool animated = true);

@@ -1,4 +1,5 @@
 ﻿using SumTheNumbersGameXamarin.Model;
+using SumTheNumbersGameXamarin.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +11,9 @@ namespace SumTheNumbersGameXamarin.ViewModels
 {
     class SettingsPageViewModel : BaseViewModel
     {
-        private readonly ISettings _settings;
+        private readonly INavigationService _navigationService;
+        private ISettings _settings;
+
         private int _count;
         private int _speedLevel;
         private bool _check10;
@@ -24,12 +27,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
         private int _check10_BorderW;
         private int _check100_BorderW;
         private int _check1000_BorderW;
-
-        private readonly double _checkedOpacity;
-        private readonly double _uncheckedOpacity;
-
-        private readonly int _checkedBorderW;
-        private readonly int _uncheckedBorderW;
 
         public double Check10_Opacity
         {
@@ -140,27 +137,17 @@ namespace SumTheNumbersGameXamarin.ViewModels
         public SettingsPageViewModel()
         {
             CheckRangeCommand = new Command((x) =>  CheckRange(x.ToString()));
+            GoBackCommand = new Command(x => GoBack());
+            ResetToDefaultCommand = new Command(x => ResetToDefault());
+
             _settings = App.GameSettings;
+            _navigationService = App.NavigationService;
+
             _count = _settings.CountOfNumbers;
             _speedLevel = _settings.SpeedLevel;
 
-            _checkedOpacity = 1;
-            _uncheckedOpacity = 0.5;
-
-            _check10 = _settings.Check10;
-            _check100 = _settings.Check100;
-            _check1000 = _settings.Check1000;
-
-            _check10_Opacity = CheckBoxOpacity(_check10);
-            _check100_Opacity = CheckBoxOpacity(_check100);
-            _check1000_Opacity = CheckBoxOpacity(_check1000);
-
-            _check10_BorderW = CheckBoxBorderWidth(_check10);
-            _check100_BorderW = CheckBoxBorderWidth(_check100);
-            _check1000_BorderW = CheckBoxBorderWidth(_check1000);
-
-            
-
+            SetVisualElementsSettings();
+            System.Diagnostics.Debug.WriteLine(Check100_Opacity);
         }
 
         public Command CheckRangeCommand { get; set; }
@@ -189,10 +176,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
                     break;
                     
             }
-
-
-           
-
         }
 
         private double CheckBoxOpacity(bool fullOpacity)
@@ -205,6 +188,34 @@ namespace SumTheNumbersGameXamarin.ViewModels
             return isChecked ? 1 : 5;
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public Command ResetToDefaultCommand { get; set; }
+        private  void ResetToDefault()
+        {
+            
+        }
+
+        public Command GoBackCommand { get; }
+        private async void GoBack()
+        {
+            await _navigationService.GoBack();
+        }
+
+        private void SetVisualElementsSettings() {
+            Count = _settings.CountOfNumbers;
+            SpeedLevel = _settings.SpeedLevel;
+
+
+            Check10_Opacity = CheckBoxOpacity(_settings.Check10);
+            Check10_BorderW = CheckBoxBorderWidth(_settings.Check10);
+            _settings.Check10 = _settings.Check10;
+
+            Check100_Opacity = CheckBoxOpacity(_settings.Check100);
+            Check100_BorderW = CheckBoxBorderWidth(_settings.Check100);
+            _settings.Check100 = _settings.Check100;
+
+            Check1000_Opacity = CheckBoxOpacity(_settings.Check1000);
+            Check1000_BorderW = CheckBoxBorderWidth(_settings.Check1000);
+            _settings.Check1000 = _settings.Check1000;
+        }
     }
 }

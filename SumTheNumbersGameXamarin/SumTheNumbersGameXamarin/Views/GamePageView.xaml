@@ -5,14 +5,6 @@
 
     
     <ContentPage.Content>
-        <!--<FlexLayout  Direction="Column" JustifyContent="Center"  BackgroundColor="#434da3" AlignItems="Center">
-            <Label Text="Are you ready?" BackgroundColor="Bisque">
-                
-            </Label>
-            <Label Text="0" BackgroundColor="AliceBlue" HeightRequest="200" />
-            
-        </FlexLayout>-->
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -29,11 +21,6 @@
                 <RowDefinition Height="*" />
 
             </Grid.RowDefinitions>
-            <!--<StackLayout Spacing="30" Grid.ColumnSpan="2" Orientation="Horizontal" BackgroundColor="AntiqueWhite">
-                <Label  Text="Are you ready? 3.. 2.. 1.. Start!" />
-                
-            </StackLayout>-->
-
             <Label  Text="{Binding AnswerText}"  Grid.ColumnSpan="4" Style="{StaticResource plainTextLabel}"/>
             <Label  Text="{Binding StringNumbers}" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" 
                     HorizontalTextAlignment="Center" 
@@ -42,20 +29,15 @@
                     FontSize="Large" FontAttributes="Bold" HeightRequest="200"/>
 
             <Button IsVisible="{Binding IsVisibleBtn}" Text="START" FontSize="Large" FontAttributes="Bold" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" BackgroundColor="#ff751a" Command="{Binding StartCountCommand}"/>
-            <!--<StackLayout Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Aquamarine">
-                <Button Text="Start" />
-
-            </StackLayout>-->
+            
             <StackLayout Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0"  Padding="8" VerticalOptions="Center">
                 <Entry  Text="{Binding UserAnswer}" Placeholder="Your answer" BackgroundColor="#8a96ff" HorizontalTextAlignment="Center" IsEnabled="{Binding IsCheckAnswerEnable}" FontSize="Medium" />
             </StackLayout>
+            
             <Button Text="Check"  Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="2" BackgroundColor="#47d147" Command="{Binding CheckTheAnswerCommand}" IsEnabled="{Binding IsCheckAnswerEnable}"/>
-
             <Button Text="Play Again" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" Command="{Binding PlayAgainCommand}" IsEnabled="{Binding IsPlayAgainEnable}"/>
             <Button  Text="Back" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1" Command="{Binding GoBackCommand}"/>
 
         </Grid>
-        
-
     </ContentPage.Content>
 </ContentPage>

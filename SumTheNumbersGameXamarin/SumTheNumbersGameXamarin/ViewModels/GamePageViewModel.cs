@@ -117,29 +117,14 @@ namespace SumTheNumbersGameXamarin.ViewModels
         public GamePageViewModel()
         {
             _settings = App.GameSettings;
-            //int count = _settings.CountOfNumbers;
             _navigationService = App.NavigationService;
-
             _newGame = new GameModel(_settings);
-
-            // _numbers = new int[5] { count, 0, count, 0, count };
-            //_isVisibleBtn = true;
-            //_isCheckAnswerEnable = false;
-            //_isPlayAgainEnable = true;
-            //_answerText = "Are you ready? Click Start!";
-
-            SetBeforeStartOptions();
+            
             StartCountCommand = new Command(x => StartTheGame());
             PlayAgainCommand = new Command(x => PlayAgain());
-            //CheckTheAnswerCommand = new Command(x => CheckTheAnswer(x.ToString()));
             CheckTheAnswerCommand = new Command(x => CheckTheAnswer());
             GoBackCommand = new Command(x => GoBack());
-            //StartText = "Are you ready?";
-            //StartTheGame();
-
-
-            //System.Diagnostics.Debug.WriteLine(_newGame.Check100);
-
+            SetBeforeStartOptions();
         }
 
         public Command StartCountCommand { get; set; }
@@ -167,7 +152,6 @@ namespace SumTheNumbersGameXamarin.ViewModels
         
         private void CheckTheAnswer()
         {
-            System.Diagnostics.Debug.WriteLine(IsCheckAnswerEnable);
             if (CanParseToInt(UserAnswer))
             {
                 if (Convert.ToInt32(UserAnswer) == _newGame.SumOfNumbers)

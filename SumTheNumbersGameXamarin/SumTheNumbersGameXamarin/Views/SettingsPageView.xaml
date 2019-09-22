@@ -29,16 +29,10 @@
                    Grid.Column="2"/>
 
             <Slider x:Name="countSlider" Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand"
-                    Maximum="10"
+                    Maximum="20"
                     Minimum="4"
                     Value="{Binding Count}"/>
             
-            <!--<StackLayout Grid.Row="1" Grid.ColumnSpan="3" Padding="2" VerticalOptions="CenterAndExpand" BackgroundColor="#8a96ff">
-                
-            </StackLayout>-->
-            
-            <!--<Switch IsToggled="True" Grid.Row="2"/>
-            <Switch Grid.Row="2" Grid.Column="1"/>-->
             <Label Text="Check the range of numbers:" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource plainTextLabel}"/>
 
             <Button Text="&lt; 10"  Grid.Row="3" Grid.Column="0"
@@ -74,8 +68,11 @@
 
             <Label Text="Fast" Grid.Row="5" Grid.Column="2"  Style="{StaticResource plainTextWithoutBackground}"/>
 
-            <Button Text="Reset to default" Grid.Row="6" Grid.ColumnSpan="3" />
-            <Button Text="Back" Grid.Row="7" Grid.ColumnSpan="3" />
+            <Button Text="Reset to default" Grid.Row="6" Grid.ColumnSpan="3" 
+                    IsEnabled="false"/>
+
+            <Button Text="Back" Grid.Row="7" Grid.ColumnSpan="3" 
+                    Command="{Binding GoBackCommand}"/>
         </Grid>
         
     </ContentPage.Content>

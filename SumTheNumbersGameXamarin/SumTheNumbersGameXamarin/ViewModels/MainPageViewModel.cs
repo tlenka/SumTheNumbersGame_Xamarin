@@ -14,7 +14,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         public string Tekst { get; set; }
         public Command NavigationCommand { get; set; }
-        //public SettingsModel Settings;
+        public Command ExitCommand { get; set; }
 
         public MainPageViewModel()
         {
@@ -24,9 +24,7 @@ namespace SumTheNumbersGameXamarin.ViewModels
 
         private async Task NavigateTo(string pageType)
         {
-            //System.Diagnostics.Debug.WriteLine("Some text");
             await _navigationService.NavigateAsync(pageType);
-            
         }
     }
 }

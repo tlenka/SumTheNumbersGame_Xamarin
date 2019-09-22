@@ -13,7 +13,7 @@ namespace SumTheNumbersGameXamarin.Model
         public bool Check100 { get; set; }
         public bool Check1000 { get; set; }
 
-        public SettingsModel(int count = 10, bool check10 = true, bool check100 = false, bool check1000 = false, int speed = 2)
+        public SettingsModel(int count = 5, bool check10 = true, bool check100 = false, bool check1000 = false, int speed = 2)
         {
             CountOfNumbers = count;
             Check10 = check10;

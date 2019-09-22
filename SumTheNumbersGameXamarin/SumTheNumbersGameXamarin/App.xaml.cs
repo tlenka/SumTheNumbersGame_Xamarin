@@ -12,18 +12,13 @@ namespace SumTheNumbersGameXamarin
         public App()
         {
             InitializeComponent();
-            //MainPage = new NavigationPage(new Views.MainPageView());
-
             NavigationService.Configure("MainPage", typeof(Views.MainPageView));
             NavigationService.Configure("GamePage", typeof(Views.GamePageView));
             NavigationService.Configure("TutorialPage", typeof(Views.TutorialPageView));
             NavigationService.Configure("SettingsPage", typeof(Views.SettingsPageView));
 
-
             var mainPage = ((NavigationService)NavigationService).SetRootPage("MainPage");
-
             MainPage = mainPage;
-            
         }
 
         public static INavigationService NavigationService { get; } = new NavigationService();
@@ -43,25 +38,5 @@ namespace SumTheNumbersGameXamarin
         {
             // Handle when your app resumes
         }
-
-        
     }
-
-
-    //[ContentProperty("Source")]
-    //public class ImageResourceExtension : IMarkupExtension
-    //{
-    //    public string Source { get; set; }
-
-    //    public object ProvideValue(IServiceProvider serviceProvider)
-    //    {
-    //        if (Source == null)
-    //            return null;
-
-    //        // Do your translation lookup here, using whatever method you require
-    //        var imageSource = ImageSource.FromFile("back3.png");
-
-    //        return imageSource;
-    //    }
-    //}
 }
